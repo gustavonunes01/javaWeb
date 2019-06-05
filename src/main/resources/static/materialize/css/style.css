@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i&display=swap');
+
+a{
+	transition: all 0.3s;
+}
+a:hover{
+	transition: all 0.3s;
+}
+
+p{
+	margin-bottom: 0;
+}
+
+.nav{
+	background-color: #323335;
+}
+
+.h-100{
+	height: 100vw !important;
+}
+
+.nav li a {
+	color: white;
+}
+
+.nav li a:hover {
+	color: #0DC9DF;
+}
+
+.card-header{
+	background-color: transparent;
+	border-color: #0DC9DF;
+	color: #0DC9DF
+}
+
+.card{
+	border-color: #0DC9DF;
+}
+
+.bg-gradient{
+		/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#079fde+1,0dc9df+58,0dccdf+100 */
+	background: rgb(7,159,222); /* Old browsers */
+	background: -moz-linear-gradient(-45deg, rgba(7,159,222,1) 1%, rgba(13,201,223,1) 58%, rgba(13,204,223,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg, rgba(7,159,222,1) 1%,rgba(13,201,223,1) 58%,rgba(13,204,223,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(135deg, rgba(7,159,222,1) 1%,rgba(13,201,223,1) 58%,rgba(13,204,223,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#079fde', endColorstr='#0dccdf',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	color: #0DC9DF;
+	font-family: 'Roboto', sans-serif;
+	font-weight: thin;
+}
+
+.form-control{
+	box-shadow: 1px 0px 6px 0px #efeaea;
+}
+
+.bg-light{
+	background-color: #FFF !important;
+}
+
+.btn-gradient{
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0dc9df+0,09afde+100 */
+background: rgb(13,201,223); /* Old browsers */
+background: -moz-linear-gradient(-45deg, rgba(13,201,223,1) 0%, rgba(9,175,222,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, rgba(13,201,223,1) 0%,rgba(9,175,222,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, rgba(13,201,223,1) 0%,rgba(9,175,222,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0dc9df', endColorstr='#09afde',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+color: white;
+}

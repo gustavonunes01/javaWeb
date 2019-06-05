@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout">	
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Controle de estagio</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link rel="stylesheet" href="/materialize/css/style.css">
+</head>	  
+
+<body>
+<div class="">
+	<div class="row w-100 h-100">
+		<div class="col-md-2">	
+			<ul class="nav flex-column h-100">
+				 <!--  <li class="nav-item">
+				    <a class="nav-link" href="#">Login</a>
+				  </li> -->
+
+				  <li class="nav-item user bg-light">
+				  	<div class="container p-3">
+				  		<div class="row">
+				  			<div class="col-md-4">
+				  				<img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" alt="" height="50" class="mt-1"> 
+				  			</div>
+				  			<div class="col"><p th:text="${user}"></p> <p>Estagiario / 15%</p> <div class="text-right"><i class="fas fa-power-off text-danger"></i></div></div>
+				  		</div>
+				  	</div>
+				  	
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="/cadastroAluno">Cadastro Aluno</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="/cadastroEmpresa">Cadastro Empresa</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="/cadastroRelatorioEstagio">Cadastro Relatório de Estagio</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="/cadastroSuperviso">Cadastro Supervisor de Estagio</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="/cadastroVagasEstagio">Cadastro Vagas de estágio</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="/alunos">Listar Alunos</a>
+				  </li>
+				</ul>
+		</div>
+
+		<div class="col" th:if="${alunos}">
+			<div class="container p-3 mt-5">
+				<div class="row">
+					<table class="table">
+						<thead>
+					    <tr>
+					      <th scope="col">RA</th>
+					      <th scope="col">Nome</th>
+					      <th scope="col">Sobrenome</th>
+					      <th scope="col">Curso</th>
+					      <th scope="col">Ano do Curso</th>
+					      <th scope="col">Termino de Curso</th>
+					      <th scope="col">Habilidade</th>
+					      <th scope="col">Sobre</th>
+					    </tr>
+
+					    <tbody>
+					    <tr th:each="aluno : ${alunos}" >
+					      <th scope="row"><samp th:text="${aluno.ra}"></samp></th>
+					      <td><samp th:text="${aluno.nome}"></samp></td>
+					      <td><samp th:text="${aluno.sobrenome}"></samp></td>
+					      <td><samp th:text="${aluno.curso}"></samp></td>
+					      <th><samp th:text="${aluno.anoDoCurso}"></samp></th>
+					      <td><samp th:text="${aluno.termino}"></samp></td>
+					      <td><samp th:text="${aluno.habilidade}"></samp></td>
+					      <td><samp th:text="${aluno.sobreVoce}"></samp></td>
+					    </tr>
+					     
+					    </tr>
+					  </tbody>
+					  </thead>
+
+					</table>
+					
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="col" th:if="!${alunos}">
+			<div class="container p-3">
+				<div class="row">
+					<div class="card w-100">
+						  <div class="card-header">
+						    Quote
+						  </div>
+						  <div class="card-body">
+						    <blockquote class="blockquote mb-0">
+						      <p>Progresso de estágio</p>
+						      <footer class="blockquote-footer">Aluno 
+						      	<cite title="Source Title">Barra de progresso</cite></footer>
+						    </blockquote>
+						  </div>
+					</div>
+
+					<div class="card w-100 mt-5">
+						  <div class="card-header">
+						    Quote
+						  </div>
+						  <div class="card-body">
+						    <blockquote class="blockquote mb-0">
+						      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+						      <footer class="blockquote-footer">Someone famous in 
+						      	<cite title="Source Title">Source Title</cite></footer>
+						    </blockquote>
+						  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+    	if(${alunos})
+    		alert('is aluno')
+    	else
+    		alert('nada funciona nessa bosta')
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+ <htmlxmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout">	
+ <!--//// -->
+    <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cadastro Aluno - Controle de Estágio</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="/materialize/css/style.css">
+
+    <!-- Adicionando Javascript -->
+    <script type="text/javascript" >
+    
+    function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('rua').value=("");
+            document.getElementById('bairro').value=("");
+            document.getElementById('cidade').value=("");
+            document.getElementById('uf').value=("");
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('rua').value=(conteudo.logradouro);
+            document.getElementById('bairro').value=(conteudo.bairro);
+            document.getElementById('cidade').value=(conteudo.localidade);
+            document.getElementById('uf').value=(conteudo.uf);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+        
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('rua').value="...";
+                document.getElementById('bairro').value="...";
+                document.getElementById('cidade').value="...";
+                document.getElementById('uf').value="...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+    </script>
+    </head>
+
+    <body>
+
+<div class="bg-gradient">
+    <div class="row w-100 h-100">
+    <div class="col justify-content-center">
+            <div class="container p-3 mt-5">
+                <div class="row justify-content-center bg-light p-5 rounded">
+    <!-- Inicio do formulario -->
+      <form method="post">
+        <div class="form-group">
+            <label>Cep:</label>
+            <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
+            onblur="pesquisacep(this.value);" class="form-control" /><br>
+            <br>
+            Rua:<input name="rua" type="text" id="rua" size="60" class="form-control" /><br>
+            <br>
+            Bairro:<input name="bairro" type="text" id="bairro" size="40" class="form-control"/><br>
+            <br>
+            Cidade: <input name="cidade" type="text" id="cidade" size="40"  class="form-control"/><br>  
+            <br>    
+            Estado:<input name="uf" type="text" id="uf" size="2" class="form-control"/><br>
+            <br>       
+        </div>
+        <div class="form-group form-inline">
+            RA: <input type="text" value="" name="ra" class="ml-1 mr-1 form-control"/>
+    		Nome: <input type="text" value="" name="nome" class="ml-1 mr-1  form-control"/>
+    		Sobrenome: <input type="text" value="" name="sobrenome" class="ml-1 mr-1 form-control"/>
+        </div>
+        <div class="form-group form-inline mt-4">
+    		Curso: <input type="text" value="" name="curso" class="ml-1 mr-1  form-control"/>
+    		Ano do curso: <input type="text" value="" name="anoDoCurso" class="ml-1 mr-1  form-control"/>
+    		Término: <input type="text" value="" name="termino" class="ml-1 mr-1  form-control"/>
+        </div>
+		<div class="form-group form-inline mt-4">
+    		Habilidades: <input type="text" value="" name="habilidade" class="ml-1 mr-1  form-control"/>
+    		Sobre você: <input type="text" value="" name="sobreVoce" class="ml-1 mr-1  form-control"/>
+		</div>
+		<button type="submit" class="btn btn-info">Enviar</button>
+      </form>
+      </div>
+  </div>
+</div>
+
+    </body>
+
+    </html>
+
+
